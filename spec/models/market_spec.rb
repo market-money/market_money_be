@@ -10,5 +10,10 @@ RSpec.describe Market do
     it { should validate_presence_of(:zip) }
     it { should validate_presence_of(:lat) }
     it { should validate_presence_of(:lon) }
-    end
+  end
+
+  describe 'relationship' do
+    it { should have_many(:market_vendor)}
+    it { should have_many(:vendors).through(:market_vendor)}
+  end
 end

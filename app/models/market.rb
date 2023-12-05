@@ -1,4 +1,7 @@
 class Market < ApplicationRecord
+  has_many :market_vendor 
+  has_many :vendors, through: :market_vendor 
+
   validates_presence_of :name
   validates_presence_of :street
   validates_presence_of :city

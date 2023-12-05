@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Markets API' do
   it 'sends a list of markets' do
+    # 1. Get all markets
     create_list(:market, 10)
 
     get '/api/v0/markets'
@@ -42,6 +43,7 @@ describe 'Markets API' do
   end
 
   it "can get one market by its id" do
+    # 2. Get one market, happy path
     id = create(:market).id
   
     get "/api/v0/markets/#{id}"
@@ -76,5 +78,19 @@ describe 'Markets API' do
 
     expect(market[:attributes]).to have_key(:lon)
     expect(market[:attributes][:lon]).to be_a(String)
+  end
+
+  it 'gives you an error if market ID does not exist' do
+    # 2. Get one market, sad path
+
+    get "/api/v0/markets/1"
+    
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    data = JSON.parse(response.body, symbolize_names: true)
+    expect(data[:errors]).to be_a(Array)
+    expect(data[:errors].first[:status]).to eq("404")
+    expect(data[:errors].first[:title]).to eq("Couldn't find Market with 'id'=1")
   end
 end

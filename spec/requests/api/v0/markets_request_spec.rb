@@ -44,7 +44,7 @@ describe 'Markets API' do
   it "can get one market by its id" do
     id = create(:market).id
   
-    get "/api/v1/markets/#{id}"
+    get "/api/v0/markets/#{id}"
   
     market = JSON.parse(response.body, symbolize_names: true)
   

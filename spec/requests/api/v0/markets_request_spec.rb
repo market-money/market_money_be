@@ -93,4 +93,44 @@ describe 'Markets API' do
     expect(data[:errors].first[:status]).to eq("404")
     expect(data[:errors].first[:title]).to eq("Couldn't find Market with 'id'=1")
   end
+
+  it 'gets all vendors for a market' do
+    # 3. Get all vendors for a market
+    market = create(:market)
+    vendor1 = create(:vendor)
+    vendor2 = create(:vendor)
+    MarketVendor.create(market: market, vendor: vendor1)
+    MarketVendor.create(market: market, vendor: vendor2)
+
+    get "/api/v0/markets/#{market.id}/vendors"
+
+    expect(response).to be_successful
+
+    vendors = JSON.parse(response.body, symbolize_names: true)[:data]
+
+    vendors.each do |vendor|
+      expect(vendor).to have_key(:id)
+      expect(vendor[:id]).to be_an(String)
+
+      expect(vendor).to have_key(:type)
+      expect(vendor[:type]).to be_an(String)
+
+      expect(vendor[:attributes]).to have_key(:name)
+      expect(vendor[:attributes][:name]).to be_a(String)
+
+      expect(vendor[:attributes]).to have_key(:description)
+      expect(vendor[:attributes][:description]).to be_a(String)
+
+      expect(vendor[:attributes]).to have_key(:contact_name)
+      expect(vendor[:attributes][:contact_name]).to be_a(String)
+
+      expect(vendor[:attributes]).to have_key(:contact_phone)
+      expect(vendor[:attributes][:contact_phone]).to be_a(String)
+
+      expect(vendor[:attributes]).to have_key(:credit_accepted)
+      expect(vendor[:attributes][:credit_accepted]).to be_a(TrueClass).or be_a(FalseClass)
+    end
+  end
+
+  
 end

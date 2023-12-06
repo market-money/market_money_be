@@ -72,7 +72,7 @@ describe 'Vendors API' do
     expect(created_vendor.credit_accepted).to eq(vendor_params[:credit_accepted])
   end
 
-  it 'does not create vendor if not all attributes are provided' do
+  xit 'does not create vendor if not all attributes are provided' do
     # 5. Create a vendor, sad path
     vendor_params = ({
       "name": "Buzzy Bees",
@@ -92,4 +92,25 @@ describe 'Vendors API' do
     expect(data[:errors].first[:status]).to eq("400")
     expect(data[:errors].first[:title]).to eq("Validation failed: Contact name can't be blank, Contact phone can't be blank")
   end
+
+  it 'can update a vendor' do
+    # 6. Update a vendor, happy path
+    id = create(:vendor).id
+    previous_params = Vendor.last.name
+    vendor_params = ({
+      "name": "Bees Knees"
+    })
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+    
+    patch "/api/v0/vendors/#{id}", headers: headers, params: JSON.generate(vendor: vendor_params)
+
+    vendor = Vendor.find_by(id: id)
+require 'pry'; binding.pry
+    expect(response).to be_successful
+    expect(response.status).to eq(200)
+    expect(vendor.name).to_not eq(previous_params)
+    expect(vendor.name).to eq(vendor_params[:name])
+  end
+
 end

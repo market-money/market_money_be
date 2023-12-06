@@ -20,6 +20,10 @@ class Api::V0::VendorsController < ApplicationController
     end
   end
 
+  def update
+    render json: VendorSerializer.new(Vendor.update(vendor_params))
+  end
+
   private
 
   def vendor_params

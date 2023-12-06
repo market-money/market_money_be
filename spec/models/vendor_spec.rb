@@ -8,6 +8,7 @@ RSpec.describe Vendor do
     it { should validate_presence_of(:contact_phone) }
     it { should allow_value(true).for(:credit_accepted) }
     it { should allow_value(false).for(:credit_accepted) }
+    it { should validate_exclusion_of(:credit_accepted).in_array([nil]) }
   end
 
   describe 'relationship' do

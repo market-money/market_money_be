@@ -1,5 +1,7 @@
 class Api::V0::VendorsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
+  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
   
   def index
     market = Market.find(params[:market_id])
@@ -13,19 +15,25 @@ class Api::V0::VendorsController < ApplicationController
   def create
     vendor = Vendor.new(vendor_params)
     
-    if vendor.save 
+    if vendor.save
       render json: VendorSerializer.new(vendor), status: :created
     else
-      render json: { errors: [{ title: "Validation failed: Contact name can't be blank, Contact phone can't be blank", status: "400" }]}
+      render_unprocessable_entity_response(vendor)
     end
   end
 
   def update
-    render json: VendorSerializer.new(Vendor.update(vendor_params))
+    vendor = Vendor.find(params[:id])
+    if vendor.update(vendor_params)
+      render json: VendorSerializer.new(Vendor.update(vendor_params))
+    else
+      render_unprocessable_entity_response(vendor)
+    end
   end
 
   def destroy
-    render json: VendorSerializer.new(Vendor.destroy(params[:id])), status: :no_content
+    Vendor.find(params[:id]).destroy!
+    head :no_content
   end
 
   private
@@ -36,5 +44,9 @@ class Api::V0::VendorsController < ApplicationController
 
   def not_found_response(exception)
     render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404)).serialize_json, status: :not_found
+  end
+
+  def render_unprocessable_entity_response(exception)
+    render json: ErrorSerializer.new(ErrorMessage.new(exception.errors.full_messages.join(', '), 400)).serialize_json, status: :bad_request
   end
 end

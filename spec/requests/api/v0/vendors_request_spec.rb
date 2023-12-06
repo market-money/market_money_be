@@ -106,11 +106,37 @@ describe 'Vendors API' do
     patch "/api/v0/vendors/#{id}", headers: headers, params: JSON.generate(vendor: vendor_params)
 
     vendor = Vendor.find_by(id: id)
-require 'pry'; binding.pry
+
     expect(response).to be_successful
     expect(response.status).to eq(200)
     expect(vendor.name).to_not eq(previous_params)
     expect(vendor.name).to eq(vendor_params[:name])
   end
 
+  it 'can delete a vendor' do
+    # 7. Delete a vendor, happy path
+    vendor = create(:vendor)
+
+    expect(Vendor.count).to eq(1)
+
+    delete "/api/v0/vendors/#{vendor.id}"
+    expect(response).to be_successful
+    expect(response.status).to eq(204)
+    expect(Vendor.count).to eq(0)
+    expect{Vendor.find(vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
+  end
+
+  it 'cannot delete a vendor with invalid id' do
+    # 7 Delete a vendor, sad path
+
+    delete "/api/v0/vendors/1"
+    
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    data = JSON.parse(response.body, symbolize_names: true)
+    expect(data[:errors]).to be_a(Array)
+    expect(data[:errors].first[:status]).to eq("404")
+    expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
+  end
 end

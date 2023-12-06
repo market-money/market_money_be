@@ -24,6 +24,10 @@ class Api::V0::VendorsController < ApplicationController
     render json: VendorSerializer.new(Vendor.update(vendor_params))
   end
 
+  def destroy
+    render json: VendorSerializer.new(Vendor.destroy(params[:id])), status: :no_content
+  end
+
   private
 
   def vendor_params

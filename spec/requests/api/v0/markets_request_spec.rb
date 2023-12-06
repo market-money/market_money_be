@@ -110,14 +110,14 @@ describe 'Markets API' do
     expect(response).to be_successful
 
     vendors = JSON.parse(response.body, symbolize_names: true)[:data]
-
+require 'pry'; binding.pry
     vendors.each do |vendor|
       expect(vendor).to have_key(:id)
       expect(vendor[:id]).to be_an(String)
 
       expect(vendor).to have_key(:type)
       expect(vendor[:type]).to be_an(String)
-
+require 'pry'; binding.pry
       expect(vendor[:attributes]).to have_key(:name)
       expect(vendor[:attributes][:name]).to be_a(String)
 

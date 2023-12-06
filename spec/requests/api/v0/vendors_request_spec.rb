@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe 'Vendors API' do
   it 'can get one vendor by its id' do
+    # 4. Get one vendor, happy path
+
     id = create(:vendor).id
 
     get "/api/v0/vendors/#{id}"
@@ -30,5 +32,18 @@ describe 'Vendors API' do
 
     expect(vendor[:attributes]).to have_key(:credit_accepted)
     expect(vendor[:attributes][:credit_accepted]).to be_a(TrueClass).or be_a(FalseClass)
+  end
+
+  it 'only provides info if vendor id exist' do
+    get "/api/v0/vendors/1"
+    
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    data = JSON.parse(response.body, symbolize_names: true)
+    expect(data[:errors]).to be_a(Array)
+    expect(data[:errors].first[:status]).to eq("404")
+    require 'pry'; binding.pry
+    expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
   end
 end

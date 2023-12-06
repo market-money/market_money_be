@@ -126,6 +126,29 @@ describe 'Vendors API' do
     expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
   end
 
+  it 'cannot update a vendor with empty info' do
+    # 6 Update a vendor, sad path with empty info
+    id = create(:vendor).id
+    previous_params = Vendor.last.contact_name
+    vendor_params = ({
+      "contact name": "",
+      "credit_accepted": false
+    })
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+    
+    patch "/api/v0/vendors/#{id}", headers: headers, params: JSON.generate(vendor: vendor_params)
+    require 'pry'; binding.pry
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data[:errors]).to be_a(Array)
+    expect(data[:errors].first[:status]).to eq("404")
+    expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
+  end
+
   it 'can delete a vendor' do
     # 7. Delete a vendor, happy path
     vendor = create(:vendor)

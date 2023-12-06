@@ -99,8 +99,8 @@ describe 'Markets API' do
     market = create(:market)
     vendor1 = create(:vendor)
     vendor2 = create(:vendor)
-    MarketVendor.create(market: market, vendor: vendor1)
-    MarketVendor.create(market: market, vendor: vendor2)
+    MarketVendor.create!(market: market, vendor: vendor1)
+    MarketVendor.create!(market: market, vendor: vendor2)
 
     get "/api/v0/markets/#{market.id}/vendors"
 
@@ -132,5 +132,18 @@ describe 'Markets API' do
     end
   end
 
-  
+  it 'gives you an error if market ID does not exist' do
+    # 3. Get all vendors for a market, sad path
+
+    get "/api/v0/markets/1/vendors"
+    
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data[:errors]).to be_a(Array)
+    expect(data[:errors].first[:status]).to eq("404")
+    expect(data[:errors].first[:title]).to eq("Couldn't find Market with 'id'=1")
+  end
 end

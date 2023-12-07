@@ -2,12 +2,6 @@ class Api::V0::VendorsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
-  
-  def index
-    market = Market.find(params[:market_id])
-    render json: VendorSerializer.new(market.vendors)
-  end
-
   def show
     render json: VendorSerializer.new(Vendor.find(params[:id]))
   end
@@ -24,7 +18,7 @@ class Api::V0::VendorsController < ApplicationController
 
   def update
     vendor = Vendor.find(params[:id])
-    if vendor.update(vendor_params)
+    if vendor.update(update_vendor_params)
       render json: VendorSerializer.new(vendor)
     else
       render_unprocessable_entity_response(vendor)
@@ -32,7 +26,7 @@ class Api::V0::VendorsController < ApplicationController
   end
 
   def destroy
-    Vendor.find(params[:id]).destroy!
+    render json: Vendor.destroy(params[:id])
     head :no_content
   end
 
@@ -40,6 +34,10 @@ class Api::V0::VendorsController < ApplicationController
 
   def vendor_params
     params.require(:vendor).permit(:name, :description, :contact_name, :contact_phone, :credit_accepted)
+  end
+
+  def update_vendor_params
+    params.fetch(:vendor, {}).permit!
   end
 
   def not_found_response(exception)

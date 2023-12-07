@@ -1,5 +1,4 @@
 class Api::V0::VendorsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   def show
@@ -37,10 +36,6 @@ class Api::V0::VendorsController < ApplicationController
 
   def update_vendor_params
     params.fetch(:vendor, {}).permit!
-  end
-
-  def not_found_response(exception)
-    render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404)).serialize_json, status: :not_found
   end
 
   def render_unprocessable_entity_response(exception)

@@ -6,6 +6,8 @@ class Api::V0::MarketVendorsController < ApplicationController
     market_vendor = MarketVendor.new(market_vendor_params)
     if market_vendor.save
       render json: MarketVendorSerializer.new(market_vendor), status: :created
+    # elsif MarketVendor.find(market_vendor_params)
+    #   render_unprocessable_entity_response(market_vendor)
     else
       render_unprocessable_entity_response(market_vendor)
     end
@@ -15,10 +17,6 @@ class Api::V0::MarketVendorsController < ApplicationController
 
   def market_vendor_params
     params.require(:market_vendor).permit(:market_id, :vendor_id)
-  end
-
-  def not_found_response(exception)
-    render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404)).serialize_json, status: :not_found
   end
 
   def render_unprocessable_entity_response(exception)

@@ -25,7 +25,7 @@ class Api::V0::VendorsController < ApplicationController
   def update
     vendor = Vendor.find(params[:id])
     if vendor.update(vendor_params)
-      render json: VendorSerializer.new(Vendor.update(vendor_params))
+      render json: VendorSerializer.new(vendor)
     else
       render_unprocessable_entity_response(vendor)
     end
@@ -47,6 +47,6 @@ class Api::V0::VendorsController < ApplicationController
   end
 
   def render_unprocessable_entity_response(exception)
-    render json: ErrorSerializer.new(ErrorMessage.new(exception.errors.full_messages.join(', '), 400)).serialize_json, status: :bad_request
+    render json: ErrorSerializer.new(ValidationErrorMessage.new(exception.errors.full_messages.join(', '), 400)).serialize_json, status: :bad_request
   end
 end

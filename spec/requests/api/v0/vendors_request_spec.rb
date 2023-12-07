@@ -90,7 +90,7 @@ describe 'Vendors API' do
     data = JSON.parse(response.body, symbolize_names: true)
     expect(data[:errors]).to be_a(Array)
     expect(data[:errors].first[:status]).to eq("400")
-    # expect(data[:errors].first[:title]).to eq("Validation failed: Contact name can't be blank, Contact phone can't be blank")
+    expect(data[:errors].first[:title]).to eq("Validation failed: Contact name can't be blank, Contact phone can't be blank")
   end
 
   it 'can update a vendor' do
@@ -131,22 +131,22 @@ describe 'Vendors API' do
     id = create(:vendor).id
     previous_params = Vendor.last.contact_name
     vendor_params = ({
-      "contact name": "",
+      "contact_name": "",
       "credit_accepted": false
     })
 
     headers = {"CONTENT_TYPE" => "application/json"}
     
     patch "/api/v0/vendors/#{id}", headers: headers, params: JSON.generate(vendor: vendor_params)
-    require 'pry'; binding.pry
+    # require 'pry'; binding.pry
     expect(response).to_not be_successful
-    expect(response.status).to eq(404)
+    expect(response.status).to eq(400)
 
     data = JSON.parse(response.body, symbolize_names: true)
 
     expect(data[:errors]).to be_a(Array)
-    expect(data[:errors].first[:status]).to eq("404")
-    expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
+    expect(data[:errors].first[:status]).to eq("400")
+    expect(data[:errors].first[:title]).to eq("Validation failed: Contact name can't be blank")
   end
 
   it 'can delete a vendor' do

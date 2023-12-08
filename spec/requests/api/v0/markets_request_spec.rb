@@ -202,5 +202,28 @@ describe 'Markets API' do
 
   it 'errors with invalid params'do
   # 10 Search Market, sad path
+  market1 = create(:market, state: "Kansas")
+  market2 = create(:market, state: "Colorado", city: "Denver")
+  market3 = create(:market, state: "Colorado", city: "Denver", name: "REI")
+  market4 = create(:market, state: "Colorado", name: "REI")
+  market5 = create(:market, name: "REI")
+
+  search_params = ({
+    city: "Denver"
+  })
+
+  headers = {"CONTENT_TYPE" => "application/json"}
+  
+  get "/api/v0/markets/search", headers: headers, params: search_params
+
+  expect(response).to_not be_successful
+  expect(response.status).to eq(422)
+
+  data = JSON.parse(response.body, symbolize_names: true)
+
+  expect(data[:errors]).to be_a(Array)
+  expect(data[:errors].first[:status]).to eq("422")
+  expect(data[:errors].first[:title]).to eq("Invalid set of parameters. Please provide a valid set of parameters to perform a search with this endpoint.")
+
   end
 end

@@ -23,8 +23,10 @@ class Api::V0::MarketsController < ApplicationController
     elsif params[:city] == nil && params[:name] == nil
       markets = Market.market_search_state(params[:state]) 
       render json: MarketSerializer.new(markets), status: :ok
-    else
-      render json: MarketSerializer.new(Market.all)
+    elsif params[:city] != nil || params[:name] != nil &&  params[:state] == nil
+      render json: { errors: [title: "Invalid set of parameters. Please provide a valid set of parameters to perform a search with this endpoint.", status: "422"]}, status: :unprocessable_entity
+    # else
+    #   render json: MarketSerializer.new(Market.all)
     end
   end
 end

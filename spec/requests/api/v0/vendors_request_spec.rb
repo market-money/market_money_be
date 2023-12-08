@@ -138,7 +138,7 @@ describe 'Vendors API' do
     headers = {"CONTENT_TYPE" => "application/json"}
     
     patch "/api/v0/vendors/#{id}", headers: headers, params: JSON.generate(vendor: vendor_params)
-    # require 'pry'; binding.pry
+
     expect(response).to_not be_successful
     expect(response.status).to eq(400)
 

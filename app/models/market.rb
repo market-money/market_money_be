@@ -10,4 +10,36 @@ class Market < ApplicationRecord
   validates_presence_of :zip
   validates_presence_of :lat
   validates_presence_of :lon
+
+  def self.state_search(state)
+    find_by_sql("select markets.* from markets where markets.state = '#{state}'")
+  end
+
+  def self.state_and_city_search(state, city)
+    find_by_sql("select markets.* from markets where markets.state = '#{state}' and markets.city = '#{city}'")
+  end
+
+  def self.market_search_all(state, city, name)
+    find_by_sql("select markets.* from markets where (markets.state = '#{state}' and markets.city = '#{city}' and markets.name = '#{name}')")
+    
+    # or (markets.state = '#{state}' and markets.city = '#{city}') or (markets.state = '#{state}' and markets.name = '#{name}') or (markets.state = '#{state}') or (markets.name = '#{name}')
+  end
+
+  def self.market_search_name(name)
+    find_by_sql("select markets.* from markets where (markets.name = '#{name}')")
+  end
+
+  def self.market_search_state_name(state, name)
+    find_by_sql("select markets.* from markets where (markets.state = '#{state}' and markets.name = '#{name}')")
+  #   # or (markets.state = '#{state}') or (markets.name = '#{name}')
+  end
+
+  def self.market_search_state_city(state, city)
+    find_by_sql("select markets.* from markets where (markets.state = '#{state}' and markets.city = '#{city}')")
+  #   # or (markets.state = '#{state}')
+  end
+
+  def self.market_search_state(state)
+    find_by_sql("select markets.* from markets where (markets.state = '#{state}')")
+  end
 end

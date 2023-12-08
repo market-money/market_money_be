@@ -85,4 +85,23 @@ describe 'Market Vendors API' do
     expect(MarketVendor.count).to eq(0)
     expect{MarketVendor.find(market_vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
   end
+
+  it 'cannot delete market_vendor without valid id' do
+    # 9. Delete a MarketVendor, sad path
+    market_vendor_params= {
+      "market_id": 1234,
+      "vendor_id": 1234
+    }
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    delete "/api/v0/market_vendors", headers: headers, params:  JSON.generate(market_vendor: market_vendor_params) 
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    data = JSON.parse(response.body, symbolize_names: true)
+    expect(data[:errors]).to be_a(Array)
+    expect(data[:errors].first[:status]).to eq("404")
+    expect(data[:errors].first[:title]).to eq("No MarketVendor with market_id=1234 AND vendor_id=1234 exists")
+  end
+
 end

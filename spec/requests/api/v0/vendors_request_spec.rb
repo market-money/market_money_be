@@ -164,9 +164,9 @@ describe 'Vendors API' do
 
   it 'cannot delete a vendor with invalid id' do
     # 7 Delete a vendor, sad path
-
-    delete "/api/v0/vendors/1"
     
+    delete "/api/v0/vendors/1"
+
     expect(response).to_not be_successful
     expect(response.status).to eq(404)
 

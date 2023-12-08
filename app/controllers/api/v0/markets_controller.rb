@@ -29,4 +29,23 @@ class Api::V0::MarketsController < ApplicationController
     #   render json: MarketSerializer.new(Market.all)
     end
   end
+
+  def atm
+    market = Market.find(params[:id])
+    lat = market.lat
+    lon = market.lon
+
+    conn = Faraday.new(url: "https://api.tomtom.com") do |faraday|
+      faraday.params["key"] = Rails.application.credentials.tomtom[:key]
+    end
+
+    response = conn.get("search/2/search/cash_dispenser.json?lat=#{lat}&lon=#{lon}")
+
+    json = JSON.parse(response.body, symbolize_names: true)
+
+    require 'pry'; binding.pry
+    # results = json[:results].map do |atm_data|
+      AtmSerializer.format_atm.(json)
+    # end
+  end
 end

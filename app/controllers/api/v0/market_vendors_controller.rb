@@ -15,6 +15,11 @@ class Api::V0::MarketVendorsController < ApplicationController
     end
   end
 
+  def destroy
+    render json: MarketVendor.find_by(market_vendor_params).destroy
+    head :no_content
+  end
+
   private
 
   def market_vendor_params

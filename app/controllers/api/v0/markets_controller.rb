@@ -43,7 +43,6 @@ class Api::V0::MarketsController < ApplicationController
 
     json = JSON.parse(response.body, symbolize_names: true)
 
-    require 'pry'; binding.pry
     # results = json[:results].map do |atm_data|
       AtmSerializer.format_atm.(json)
     # end

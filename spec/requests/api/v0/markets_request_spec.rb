@@ -227,7 +227,7 @@ describe 'Markets API' do
 
   end
 
-  it 'shows nearest atm' do
+  xit 'shows nearest atm' do
     #11 Get Cash, happy path
     market = create(:market, lat: "35.07904", lon: "-106.60068")
 

@@ -24,7 +24,6 @@ class Api::V0::MarketVendorsController < ApplicationController
     else
       no_id_error_message
     end
-
   end
 
   private
@@ -38,9 +37,6 @@ class Api::V0::MarketVendorsController < ApplicationController
   end
 
   def render_unprocessable_entity_response(exception)
-    # require 'pry'; binding.pry
-    # render json: ErrorSerializer.new(DuplicateErrorMessage.new(exception.errors, 422)).serialize_json, status: :not_found
-
     render json: { errors: [title: "Validation failed: Market vendor association between market with market_id=#{params[:market_vendor][:market_id]} and vendor_id=#{params[:market_vendor][:vendor_id]} already exists", status: "422"] }, status: :unprocessable_entity
   end
 

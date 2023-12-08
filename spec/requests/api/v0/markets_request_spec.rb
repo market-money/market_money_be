@@ -149,4 +149,81 @@ describe 'Markets API' do
     expect(data[:errors].first[:status]).to eq("404")
     expect(data[:errors].first[:title]).to eq("Couldn't find Market with 'id'=1")
   end
+
+  it 'searches market by state city and/or name' do
+    # 10. Search markets, happy path
+    market1 = create(:market, state: "Kansas")
+    market2 = create(:market, state: "Colorado", city: "Denver")
+    market3 = create(:market, state: "Colorado", city: "Denver", name: "REI")
+    market4 = create(:market, state: "Colorado", name: "REI")
+    market5 = create(:market, name: "REI")
+    search_params = {
+      state: "Colorado",
+      city: "Denver",
+      name: "REI"
+    }
+    headers = {"CONTENT_TYPE" => "application/json"}
+    
+    get '/api/v0/markets/search', headers: headers, params: search_params
+    
+    expect(response).to be_successful
+    expect(response.status).to eq(200)
+    search_results = JSON.parse(response.body, symbolize_names: true)[:data]
+    expect(search_results[0][:id]).to eq("#{market3.id}")
+    expect(search_results[0][:attributes][:name]).to eq(market3.name)
+    expect(search_results[0][:attributes][:city]).to eq(market3.city)
+    expect(search_results[0][:attributes][:state]).to eq(market3.state)
+  end
+
+  it 'searches market by state city and/or name' do
+    # 10. Search markets, happy path
+    market1 = create(:market, state: "Kansas")
+    market2 = create(:market, state: "Colorado", city: "Denver")
+    market3 = create(:market, state: "Colorado", city: "Denver", name: "REI")
+    market4 = create(:market, state: "Colorado", name: "REI")
+    market5 = create(:market, name: "REI")
+
+    search_params = ({
+      name: "REI"
+    })
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+    
+    get "/api/v0/markets/search", headers: headers, params: search_params
+
+    expect(response).to be_successful
+    expect(response.status).to eq(200)
+
+    search_results = JSON.parse(response.body, symbolize_names: true)[:data]
+    expect(search_results[0][:id]).to eq("#{market3.id}")
+    expect(search_results[1][:id]).to eq("#{market4.id}")
+    expect(search_results[2][:id]).to eq("#{market5.id}")
+  end
+
+  it 'errors with invalid params'do
+  # 10 Search Market, sad path
+  market1 = create(:market, state: "Kansas")
+  market2 = create(:market, state: "Colorado", city: "Denver")
+  market3 = create(:market, state: "Colorado", city: "Denver", name: "REI")
+  market4 = create(:market, state: "Colorado", name: "REI")
+  market5 = create(:market, name: "REI")
+
+  search_params = ({
+    city: "Denver"
+  })
+
+  headers = {"CONTENT_TYPE" => "application/json"}
+  
+  get "/api/v0/markets/search", headers: headers, params: search_params
+
+  expect(response).to_not be_successful
+  expect(response.status).to eq(422)
+
+  data = JSON.parse(response.body, symbolize_names: true)
+
+  expect(data[:errors]).to be_a(Array)
+  expect(data[:errors].first[:status]).to eq("422")
+  expect(data[:errors].first[:title]).to eq("Invalid set of parameters. Please provide a valid set of parameters to perform a search with this endpoint.")
+
+  end
 end

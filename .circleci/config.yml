@@ -64,7 +64,7 @@ jobs:
 
       - run:
           name: Parallel RSpec
-          command: bundle exec rspec
+          command: bundle exec rspec spec
 
       # Save artifacts
 #      - store_test_results:

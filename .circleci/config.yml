@@ -76,4 +76,10 @@ workflows:
   main-workflow:
     jobs:
       - build
+        filters:
+            branches:
+              only:
+                - main
+            pull-requests:
+              only: ['*']
 

@@ -257,5 +257,7 @@ describe 'Markets API' do
     expect(atm_search.first[:attributes][:lat]).to eq(37.335931)
     expect(atm_search.first[:attributes][:lon]).to eq(-121.889312)
     expect(atm_search.first[:attributes][:distance]).to eq(2.8319742817)
+
+    #add change
   end
 end

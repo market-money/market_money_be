@@ -245,7 +245,6 @@ describe 'Markets API' do
     expect(response.status).to eq(200)
 
     atm_search = JSON.parse(response.body, symbolize_names: true)[:data]
-
     expect(atm_search.first).to have_key(:id)
     expect(atm_search.first[:id]).to eq(nil)
 

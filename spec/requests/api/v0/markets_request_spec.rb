@@ -226,9 +226,18 @@ describe 'Markets API' do
 
   end
 
-  xit 'shows nearest atm' do
+  it 'shows nearest atm' do
     #11 Get Cash, happy path
     market = create(:market, lat: "35.07904", lon: "-106.60068")
+    json_data = File.read('spec/fixtures/nm_atms.json')
+    stub_request(:get, "https://api.tomtom.com/search/2/categorySearch/atm.json?key=#{Rails.application.credentials.tomtom[:key]}&lat=35.07904&lon=-106.60068").
+    with(
+      headers: {
+     'Accept'=>'*/*',
+     'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+     'User-Agent'=>'Faraday v2.7.12'
+      }).
+    to_return(status: 200, body: json_data, headers: {})
 
     get "/api/v0/markets/#{market.id}/nearest_atms"
 
@@ -237,17 +246,18 @@ describe 'Markets API' do
 
     atm_search = JSON.parse(response.body, symbolize_names: true)[:data]
 
-    expect(atm_search).to have_key(:id)
-    expect(atm_search[:id]).to eq(nil)
+    expect(atm_search.first).to have_key(:id)
+    expect(atm_search.first[:id]).to eq(nil)
 
-    expect(atm_search).to have_key(:type)
-    expect(atm_search[:type]).to eq("atm")
+    expect(atm_search.first).to have_key(:type)
+    expect(atm_search.first[:type]).to eq("atm")
+    expect(atm_search.first[:attributes]).to have_key(:name)
+    expect(atm_search.first[:attributes][:name]).to eq("ATM")
+    expect(atm_search.first[:attributes][:address]).to eq("15 Fountain Alley, San Jose, CA 95113")
+    expect(atm_search.first[:attributes][:lat]).to eq(37.335931)
+    expect(atm_search.first[:attributes][:lon]).to eq(-121.889312)
+    expect(atm_search.first[:attributes][:distance]).to eq(2.8319742817)
 
-    expect(atm_search[0][:attributes]).to have_key(:name)
-    expect(atm_search[0][:attributes][:name]).to eq("Ace Cash Express")
-    expect(atm_search[0][:attributes][:address]).to eq("3902 Central Avenue Southeast, Albuquerque, NM 87108")
-    expect(atm_search[0][:attributes][:lat]).to eq(35.07904)
-    expect(atm_search[0][:attributes][:lon]).to eq(-106.60068)
-    expect(atm_search[0][:attributes][:distance]).to eq(0)
+    #add change
   end
 end

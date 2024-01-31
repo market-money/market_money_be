@@ -229,7 +229,7 @@ describe 'Markets API' do
   it 'shows nearest atm' do
     #11 Get Cash, happy path
     market = create(:market, lat: "35.07904", lon: "-106.60068")
-    data = File.read('spec/fixtures/nm_atms.json')
+    json_data = File.read('spec/fixtures/nm_atms.json')
     stub_request(:get, "https://api.tomtom.com/search/2/categorySearch/atm.json?key=#{Rails.application.credentials.tomtom[:key]}&lat=35.07904&lon=-106.60068").
     with(
       headers: {
@@ -237,7 +237,7 @@ describe 'Markets API' do
      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
      'User-Agent'=>'Faraday v2.7.12'
       }).
-    to_return(status: 200, body: data, headers: {})
+    to_return(status: 200, body: json_data, headers: {})
 
     get "/api/v0/markets/#{market.id}/nearest_atms"
 

@@ -44,7 +44,7 @@ class Api::V0::MarketsController < ApplicationController
     json = JSON.parse(response.body, symbolize_names: true)
 
     # results = json[:results].map do |atm_data|
-      AtmSerializer.format_atm.(json)
+      x = AtmSerializer.new.format_atm(json)
     # end
   end
 end

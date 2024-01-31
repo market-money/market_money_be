@@ -1,0 +1,708 @@
+{
+  "summary": {
+      "query": "atm",
+      "queryType": "NON_NEAR",
+      "queryTime": 344,
+      "numResults": 10,
+      "offset": 0,
+      "totalResults": 100,
+      "fuzzyLevel": 1,
+      "geoBias": {
+          "lat": 37.337,
+          "lon": -121.89
+      }
+  },
+  "results": [
+      {
+          "type": "POI",
+          "id": "HYFGgOH_CRCNdNojtTrQDQ",
+          "score": 2.8319803136,
+          "dist": 40.16466,
+          "info": "search:ta:840069005392390-US",
+          "poi": {
+              "name": "ATM at Msquared",
+              "phone": "+1 408-294-6741",
+              "categorySet": [
+                  {
+                      "id": 7397
+                  }
+              ],
+              "categories": [
+                  "cash dispenser"
+              ],
+              "classifications": [
+                  {
+                      "code": "CASH_DISPENSER",
+                      "names": [
+                          {
+                              "nameLocale": "en-US",
+                              "name": "cash dispenser"
+                          }
+                      ]
+                  }
+              ]
+          },
+          "address": {
+              "streetNumber": "31",
+              "streetName": "East Santa Clara Street",
+              "municipalitySubdivision": "Downtown San Jose",
+              "municipality": "San Jose",
+              "countrySecondarySubdivision": "Santa Clara",
+              "countrySubdivision": "CA",
+              "countrySubdivisionName": "California",
+              "countrySubdivisionCode": "CA",
+              "postalCode": "95113",
+              "extendedPostalCode": "95113-1801",
+              "countryCode": "US",
+              "country": "United States",
+              "countryCodeISO3": "USA",
+              "freeformAddress": "31 East Santa Clara Street, San Jose, CA 95113",
+              "localName": "San Jose"
+          },
+          "position": {
+              "lat": 37.336651,
+              "lon": -121.890117
+          },
+          "viewport": {
+              "topLeftPoint": {
+                  "lat": 37.33755,
+                  "lon": -121.89125
+              },
+              "btmRightPoint": {
+                  "lat": 37.33575,
+                  "lon": -121.88899
+              }
+          },
+          "entryPoints": [
+              {
+                  "type": "main",
+                  "position": {
+                      "lat": 37.33645,
+                      "lon": -121.88997
+                  }
+              }
+          ]
+      },
+      {
+          "type": "POI",
+          "id": "7S1ufTs7Cn0vUDAw0dAhXg",
+          "score": 2.8319790023,
+          "dist": 67.961761,
+          "info": "search:ta:840067000034997-US",
+          "poi": {
+              "name": "ATM",
+              "categorySet": [
+                  {
+                      "id": 7397
+                  }
+              ],
+              "categories": [
+                  "cash dispenser"
+              ],
+              "classifications": [
+                  {
+                      "code": "CASH_DISPENSER",
+                      "names": [
+                          {
+                              "nameLocale": "en-US",
+                              "name": "cash dispenser"
+                          }
+                      ]
+                  }
+              ]
+          },
+          "address": {
+              "streetNumber": "17",
+              "streetName": "East Santa Clara Street",
+              "municipalitySubdivision": "Downtown San Jose",
+              "municipality": "San Jose",
+              "countrySecondarySubdivision": "Santa Clara",
+              "countrySubdivision": "CA",
+              "countrySubdivisionName": "California",
+              "countrySubdivisionCode": "CA",
+              "postalCode": "95113",
+              "extendedPostalCode": "95113-1801",
+              "countryCode": "US",
+              "country": "United States",
+              "countryCodeISO3": "USA",
+              "freeformAddress": "17 East Santa Clara Street, San Jose, CA 95113",
+              "localName": "San Jose"
+          },
+          "position": {
+              "lat": 37.336456,
+              "lon": -121.89035
+          },
+          "viewport": {
+              "topLeftPoint": {
+                  "lat": 37.33736,
+                  "lon": -121.89148
+              },
+              "btmRightPoint": {
+                  "lat": 37.33556,
+                  "lon": -121.88922
+              }
+          },
+          "entryPoints": [
+              {
+                  "type": "main",
+                  "position": {
+                      "lat": 37.33632,
+                      "lon": -121.89025
+                  }
+              }
+          ]
+      },
+      {
+          "type": "POI",
+          "id": "kw6lZUJXmU3WKr54TcIhbw",
+          "score": 2.831977691,
+          "dist": 91.801065,
+          "info": "search:ta:840069020158861-US",
+          "poi": {
+              "name": "Metabank",
+              "categorySet": [
+                  {
+                      "id": 7397
+                  }
+              ],
+              "categories": [
+                  "cash dispenser"
+              ],
+              "classifications": [
+                  {
+                      "code": "CASH_DISPENSER",
+                      "names": [
+                          {
+                              "nameLocale": "en-US",
+                              "name": "cash dispenser"
+                          }
+                      ]
+                  }
+              ]
+          },
+          "address": {
+              "streetNumber": "11",
+              "streetName": "South 2nd Street",
+              "municipalitySubdivision": "Downtown San Jose",
+              "municipality": "San Jose",
+              "countrySecondarySubdivision": "Santa Clara",
+              "countrySubdivision": "CA",
+              "countrySubdivisionName": "California",
+              "countrySubdivisionCode": "CA",
+              "postalCode": "95113",
+              "extendedPostalCode": "95113-2532",
+              "countryCode": "US",
+              "country": "United States",
+              "countryCodeISO3": "USA",
+              "freeformAddress": "11 South 2nd Street, San Jose, CA 95113",
+              "localName": "San Jose"
+          },
+          "position": {
+              "lat": 37.336452,
+              "lon": -121.889223
+          },
+          "viewport": {
+              "topLeftPoint": {
+                  "lat": 37.33735,
+                  "lon": -121.89035
+              },
+              "btmRightPoint": {
+                  "lat": 37.33555,
+                  "lon": -121.88809
+              }
+          },
+          "entryPoints": [
+              {
+                  "type": "main",
+                  "position": {
+                      "lat": 37.33641,
+                      "lon": -121.88932
+                  }
+              }
+          ]
+      },
+      {
+          "type": "POI",
+          "id": "wrm-9T8WS_-cTnxgNiR-mQ",
+          "score": 2.8319771665,
+          "dist": 98.663341,
+          "info": "search:ta:840069020281649-US",
+          "poi": {
+              "name": "Metabank",
+              "categorySet": [
+                  {
+                      "id": 7397
+                  }
+              ],
+              "categories": [
+                  "cash dispenser"
+              ],
+              "classifications": [
+                  {
+                      "code": "CASH_DISPENSER",
+                      "names": [
+                          {
+                              "nameLocale": "en-US",
+                              "name": "cash dispenser"
+                          }
+                      ]
+                  }
+              ]
+          },
+          "address": {
+              "streetNumber": "91",
+              "streetName": "East Santa Clara Street",
+              "municipalitySubdivision": "Downtown San Jose",
+              "municipality": "San Jose",
+              "countrySecondarySubdivision": "Santa Clara",
+              "countrySubdivision": "CA",
+              "countrySubdivisionName": "California",
+              "countrySubdivisionCode": "CA",
+              "postalCode": "95113",
+              "extendedPostalCode": "95113-1803",
+              "countryCode": "US",
+              "country": "United States",
+              "countryCodeISO3": "USA",
+              "freeformAddress": "91 East Santa Clara Street, San Jose, CA 95113",
+              "localName": "San Jose"
+          },
+          "position": {
+              "lat": 37.33725,
+              "lon": -121.888929
+          },
+          "viewport": {
+              "topLeftPoint": {
+                  "lat": 37.33815,
+                  "lon": -121.89006
+              },
+              "btmRightPoint": {
+                  "lat": 37.33635,
+                  "lon": -121.8878
+              }
+          },
+          "entryPoints": [
+              {
+                  "type": "main",
+                  "position": {
+                      "lat": 37.33702,
+                      "lon": -121.88876
+                  }
+              }
+          ]
+      },
+      {
+          "type": "POI",
+          "id": "OcV3Ze8pEpDeXFydyVFzjA",
+          "score": 2.8319769043,
+          "dist": 102.25309,
+          "info": "search:ta:840069019644454-US",
+          "poi": {
+              "name": "Prosperity Bank",
+              "categorySet": [
+                  {
+                      "id": 7397
+                  }
+              ],
+              "categories": [
+                  "cash dispenser"
+              ],
+              "classifications": [
+                  {
+                      "code": "CASH_DISPENSER",
+                      "names": [
+                          {
+                              "nameLocale": "en-US",
+                              "name": "cash dispenser"
+                          }
+                      ]
+                  }
+              ]
+          },
+          "address": {
+              "streetNumber": "78",
+              "streetName": "East Santa Clara Street",
+              "municipalitySubdivision": "Downtown San Jose",
+              "municipality": "San Jose",
+              "countrySecondarySubdivision": "Santa Clara",
+              "countrySubdivision": "CA",
+              "countrySubdivisionName": "California",
+              "countrySubdivisionCode": "CA",
+              "postalCode": "95113",
+              "extendedPostalCode": "95113-1804",
+              "countryCode": "US",
+              "country": "United States",
+              "countryCodeISO3": "USA",
+              "freeformAddress": "78 East Santa Clara Street, San Jose, CA 95113",
+              "localName": "San Jose"
+          },
+          "position": {
+              "lat": 37.336596,
+              "lon": -121.888961
+          },
+          "viewport": {
+              "topLeftPoint": {
+                  "lat": 37.3375,
+                  "lon": -121.89009
+              },
+              "btmRightPoint": {
+                  "lat": 37.3357,
+                  "lon": -121.88783
+              }
+          },
+          "entryPoints": [
+              {
+                  "type": "main",
+                  "position": {
+                      "lat": 37.33684,
+                      "lon": -121.88914
+                  }
+              }
+          ]
+      },
+      {
+          "type": "POI",
+          "id": "x8mwDLS4_luO_ic_0vrXDg",
+          "score": 2.8319769043,
+          "dist": 102.242878,
+          "info": "search:ta:840069019804960-US",
+          "poi": {
+              "name": "Metabank",
+              "categorySet": [
+                  {
+                      "id": 7397
+                  }
+              ],
+              "categories": [
+                  "cash dispenser"
+              ],
+              "classifications": [
+                  {
+                      "code": "CASH_DISPENSER",
+                      "names": [
+                          {
+                              "nameLocale": "en-US",
+                              "name": "cash dispenser"
+                          }
+                      ]
+                  }
+              ]
+          },
+          "address": {
+              "streetNumber": "52",
+              "streetName": "East Santa Clara Street",
+              "municipalitySubdivision": "Downtown San Jose",
+              "municipality": "San Jose",
+              "countrySecondarySubdivision": "Santa Clara",
+              "countrySubdivision": "CA",
+              "countrySubdivisionName": "California",
+              "countrySubdivisionCode": "CA",
+              "postalCode": "95113",
+              "extendedPostalCode": "95113-1804",
+              "countryCode": "US",
+              "country": "United States",
+              "countryCodeISO3": "USA",
+              "freeformAddress": "52 East Santa Clara Street, San Jose, CA 95113",
+              "localName": "San Jose"
+          },
+          "position": {
+              "lat": 37.336596,
+              "lon": -121.888961
+          },
+          "viewport": {
+              "topLeftPoint": {
+                  "lat": 37.3375,
+                  "lon": -121.89009
+              },
+              "btmRightPoint": {
+                  "lat": 37.3357,
+                  "lon": -121.88783
+              }
+          },
+          "entryPoints": [
+              {
+                  "type": "main",
+                  "position": {
+                      "lat": 37.33684,
+                      "lon": -121.88914
+                  }
+              }
+          ]
+      },
+      {
+          "type": "POI",
+          "id": "7G2OoTRH0jKaNtBZdKUklA",
+          "score": 2.8319763797,
+          "dist": 111.211595,
+          "info": "search:ta:840069019481210-US",
+          "poi": {
+              "name": "Metabank",
+              "categorySet": [
+                  {
+                      "id": 7397
+                  }
+              ],
+              "categories": [
+                  "cash dispenser"
+              ],
+              "classifications": [
+                  {
+                      "code": "CASH_DISPENSER",
+                      "names": [
+                          {
+                              "nameLocale": "en-US",
+                              "name": "cash dispenser"
+                          }
+                      ]
+                  }
+              ]
+          },
+          "address": {
+              "streetNumber": "97",
+              "streetName": "East Santa Clara Street",
+              "municipalitySubdivision": "Downtown San Jose",
+              "municipality": "San Jose",
+              "countrySecondarySubdivision": "Santa Clara",
+              "countrySubdivision": "CA",
+              "countrySubdivisionName": "California",
+              "countrySubdivisionCode": "CA",
+              "postalCode": "95113",
+              "extendedPostalCode": "95113-1803",
+              "countryCode": "US",
+              "country": "United States",
+              "countryCodeISO3": "USA",
+              "freeformAddress": "97 East Santa Clara Street, San Jose, CA 95113",
+              "localName": "San Jose"
+          },
+          "position": {
+              "lat": 37.33731,
+              "lon": -121.888804
+          },
+          "viewport": {
+              "topLeftPoint": {
+                  "lat": 37.33821,
+                  "lon": -121.88994
+              },
+              "btmRightPoint": {
+                  "lat": 37.33641,
+                  "lon": -121.88767
+              }
+          },
+          "entryPoints": [
+              {
+                  "type": "main",
+                  "position": {
+                      "lat": 37.33708,
+                      "lon": -121.88863
+                  }
+              }
+          ]
+      },
+      {
+          "type": "POI",
+          "id": "jBMgZHF-0rlJGmKq0KWxJA",
+          "score": 2.8319745439,
+          "dist": 129.217815,
+          "info": "search:ta:840069006887826-US",
+          "poi": {
+              "name": "ATM",
+              "categorySet": [
+                  {
+                      "id": 7397
+                  }
+              ],
+              "categories": [
+                  "cash dispenser"
+              ],
+              "classifications": [
+                  {
+                      "code": "CASH_DISPENSER",
+                      "names": [
+                          {
+                              "nameLocale": "en-US",
+                              "name": "cash dispenser"
+                          }
+                      ]
+                  }
+              ]
+          },
+          "address": {
+              "streetNumber": "1",
+              "streetName": "North 1st Street",
+              "municipalitySubdivision": "Downtown San Jose",
+              "municipality": "San Jose",
+              "countrySecondarySubdivision": "Santa Clara",
+              "countrySubdivision": "CA",
+              "countrySubdivisionName": "California",
+              "countrySubdivisionCode": "CA",
+              "postalCode": "95113",
+              "extendedPostalCode": "95113-1202",
+              "countryCode": "US",
+              "country": "United States",
+              "countryCodeISO3": "USA",
+              "freeformAddress": "1 North 1st Street, San Jose, CA 95113",
+              "localName": "San Jose"
+          },
+          "position": {
+              "lat": 37.336289,
+              "lon": -121.891156
+          },
+          "viewport": {
+              "topLeftPoint": {
+                  "lat": 37.33719,
+                  "lon": -121.89229
+              },
+              "btmRightPoint": {
+                  "lat": 37.33539,
+                  "lon": -121.89002
+              }
+          },
+          "entryPoints": [
+              {
+                  "type": "main",
+                  "position": {
+                      "lat": 37.33646,
+                      "lon": -121.89079
+                  }
+              }
+          ]
+      },
+      {
+          "type": "POI",
+          "id": "n_WUgSFZOhbmIA5trG0qcw",
+          "score": 2.8319745439,
+          "dist": 131.225782,
+          "info": "search:ta:840067000028961-US",
+          "poi": {
+              "name": "First National Bank - ATM",
+              "categorySet": [
+                  {
+                      "id": 7397
+                  }
+              ],
+              "categories": [
+                  "cash dispenser"
+              ],
+              "classifications": [
+                  {
+                      "code": "CASH_DISPENSER",
+                      "names": [
+                          {
+                              "nameLocale": "en-US",
+                              "name": "cash dispenser"
+                          }
+                      ]
+                  }
+              ]
+          },
+          "address": {
+              "streetNumber": "11",
+              "streetName": "South 3rd Street",
+              "municipalitySubdivision": "Downtown San Jose",
+              "municipality": "San Jose",
+              "countrySecondarySubdivision": "Santa Clara",
+              "countrySubdivision": "CA",
+              "countrySubdivisionName": "California",
+              "countrySubdivisionCode": "CA",
+              "postalCode": "95113",
+              "extendedPostalCode": "95113-2504",
+              "countryCode": "US",
+              "country": "United States",
+              "countryCodeISO3": "USA",
+              "freeformAddress": "11 South 3rd Street, San Jose, CA 95113",
+              "localName": "San Jose"
+          },
+          "position": {
+              "lat": 37.336744,
+              "lon": -121.888551
+          },
+          "viewport": {
+              "topLeftPoint": {
+                  "lat": 37.33764,
+                  "lon": -121.88968
+              },
+              "btmRightPoint": {
+                  "lat": 37.33584,
+                  "lon": -121.88742
+              }
+          },
+          "entryPoints": [
+              {
+                  "type": "main",
+                  "position": {
+                      "lat": 37.3369,
+                      "lon": -121.88825
+                  }
+              }
+          ]
+      },
+      {
+          "type": "POI",
+          "id": "ZIJs5CUj4Rh6WEZPsoJ-vA",
+          "score": 2.8319742817,
+          "dist": 133.47846,
+          "info": "search:ta:840069009527035-US",
+          "poi": {
+              "name": "ATM",
+              "categorySet": [
+                  {
+                      "id": 7397
+                  }
+              ],
+              "categories": [
+                  "cash dispenser"
+              ],
+              "classifications": [
+                  {
+                      "code": "CASH_DISPENSER",
+                      "names": [
+                          {
+                              "nameLocale": "en-US",
+                              "name": "cash dispenser"
+                          }
+                      ]
+                  }
+              ]
+          },
+          "address": {
+              "streetNumber": "15",
+              "streetName": "Fountain Alley",
+              "municipalitySubdivision": "Downtown San Jose",
+              "municipality": "San Jose",
+              "countrySecondarySubdivision": "Santa Clara",
+              "countrySubdivision": "CA",
+              "countrySubdivisionName": "California",
+              "countrySubdivisionCode": "CA",
+              "postalCode": "95113",
+              "extendedPostalCode": "95113-2506",
+              "countryCode": "US",
+              "country": "United States",
+              "countryCodeISO3": "USA",
+              "freeformAddress": "15 Fountain Alley, San Jose, CA 95113",
+              "localName": "San Jose"
+          },
+          "position": {
+              "lat": 37.335931,
+              "lon": -121.889312
+          },
+          "viewport": {
+              "topLeftPoint": {
+                  "lat": 37.33683,
+                  "lon": -121.89044
+              },
+              "btmRightPoint": {
+                  "lat": 37.33503,
+                  "lon": -121.88818
+              }
+          },
+          "entryPoints": [
+              {
+                  "type": "main",
+                  "position": {
+                      "lat": 37.33575,
+                      "lon": -121.88989
+                  }
+              }
+          ]
+      }
+  ]
+}

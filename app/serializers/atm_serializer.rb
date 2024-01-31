@@ -1,7 +1,7 @@
 class AtmSerializer
   attr_reader :info
 
-  def self.format_atm(results)
+  def format_atm(results)
     results.map do |result|
       {
         data: [
